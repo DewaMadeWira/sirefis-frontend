@@ -9,7 +9,8 @@ import {
 import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
-import DemoPage from './payments/page';
+import DemoPage from './gpu-data/page';
+import GpuTable from './gpu-data/page';
 
 function App() {
     // const [count, setCount] = useState(0);
@@ -25,7 +26,7 @@ function App() {
                 {/* 2nd Column */}
                 <div className='ml-5 w-full'>
                     <SecondColHead title='List GPU'></SecondColHead>
-                    <DemoPage></DemoPage>
+                    <GpuTable></GpuTable>
                 </div>
             </div>
         </div>

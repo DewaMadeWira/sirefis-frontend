@@ -39,7 +39,7 @@ import { useQuery } from '@tanstack/react-query';
 //     });
 // };
 
-export default function DemoPage() {
+export default function GpuTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
@@ -57,13 +57,17 @@ export default function DemoPage() {
     // }, []);
 
     if (isLoading) {
-        return <h1>Loading..</h1>;
+        return (
+            <div className='flex justify-center items-center h-1/2'>
+                <h2 className='text-2xl'>Loading..</h2>
+            </div>
+        );
     }
 
     if (data != null) {
         return (
-            <div className='container mx-auto py-10'>
-                <h1>Hello</h1>
+            <div className='bg-white border-2 border-black rounded-2xl p-5 mt-5'>
+                {/* <h1>Hello</h1> */}
                 <DataTable columns={columns} data={data!} />
             </div>
         );

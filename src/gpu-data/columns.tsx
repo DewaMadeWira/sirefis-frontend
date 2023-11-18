@@ -44,6 +44,10 @@ export const columns: ColumnDef<GpuData>[] = [
         header: 'GPU ID',
     },
     {
+        accessorKey: 'gpu_name',
+        header: 'GPU Name',
+    },
+    {
         accessorKey: 'G3Dmark',
         header: 'G3Dmark',
     },
@@ -52,36 +56,64 @@ export const columns: ColumnDef<GpuData>[] = [
         header: 'G2Dmark',
     },
     {
-        accessorKey: 'amount',
-        header: ({ column }) => {
-            return (
-                <div className='text-right'>
-                    <Button
-                        variant='ghost'
-                        onClick={() =>
-                            column.toggleSorting(column.getIsSorted() === 'asc')
-                        }
-                    >
-                        Amount
-                        <ArrowUpDown className='ml-2 h-4 w-4' />
-                    </Button>
-                </div>
-            );
-        },
-        cell: ({ row }) => {
-            const amount = parseFloat(row.getValue('amount'));
-            const formatted = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            }).format(amount);
-
-            return <div className='text-right font-medium'>{formatted}</div>;
-        },
-
-        // header: 'Amount',
+        accessorKey: 'price',
+        header: 'Price',
     },
     {
-        id: 'actions',
+        accessorKey: 'gpu_value',
+        header: 'GPU Value',
+    },
+    {
+        accessorKey: 'TDP',
+        header: 'TDP',
+    },
+    {
+        accessorKey: 'power_performance',
+        header: 'Power Performance',
+    },
+    {
+        accessorKey: 'test_date',
+        header: 'Test Date',
+    },
+    {
+        accessorKey: 'category',
+        header: 'Category',
+    },
+    {
+        accessorKey: 'company',
+        header: 'Company',
+    },
+    // {
+    //     accessorKey: 'amount',
+    //     header: ({ column }) => {
+    //         return (
+    //             <div className='text-right'>
+    //                 <Button
+    //                     variant='ghost'
+    //                     onClick={() =>
+    //                         column.toggleSorting(column.getIsSorted() === 'asc')
+    //                     }
+    //                 >
+    //                     Amount
+    //                     <ArrowUpDown className='ml-2 h-4 w-4' />
+    //                 </Button>
+    //             </div>
+    //         );
+    //     },
+    //     cell: ({ row }) => {
+    //         const amount = parseFloat(row.getValue('amount'));
+    //         const formatted = new Intl.NumberFormat('en-US', {
+    //             style: 'currency',
+    //             currency: 'USD',
+    //         }).format(amount);
+
+    //         return <div className='text-right font-medium'>{formatted}</div>;
+    //     },
+
+    //     // header: 'Amount',
+    // },
+    {
+        accessorKey: 'gpu_id',
         cell: ({ row }) => {
             const gpu = row.original;
 
@@ -93,22 +125,24 @@ export const columns: ColumnDef<GpuData>[] = [
                             <MoreHorizontal className='h-4 w-4' />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align='end'>
+                    <DropdownMenuContent align='end' className='bg-white'>
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
+                        <DropdownMenuItem>Update GPU</DropdownMenuItem>
+                        <DropdownMenuItem>Delete GPU</DropdownMenuItem>
+                        {/* <DropdownMenuItem
                             onClick={() =>
                                 navigator.clipboard.writeText(
                                     gpu.gpu_id.toString()
                                 )
                             }
                         >
-                            Copy payment ID
+                            Copy GPU ID {gpu.gpu_id.toString()}
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>View customer</DropdownMenuItem>
                         <DropdownMenuItem>
                             View payment details
-                        </DropdownMenuItem>
+                        </DropdownMenuItem> */}
                     </DropdownMenuContent>
                 </DropdownMenu>
             );

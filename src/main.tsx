@@ -4,9 +4,9 @@ import App from './App.tsx';
 import './index.css';
 import { Route } from 'wouter';
 import CreateGpu from './CreateGpu.tsx';
-import { DataTable } from './payments/data-table.tsx';
-import DemoPage from './payments/page.tsx';
-import TableTest from './table-test.tsx';
+import { DataTable } from './gpu-data/data-table.tsx';
+import DemoPage from './gpu-data/page.tsx';
+
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
