@@ -17,27 +17,45 @@ import {
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Payment = {
-    id: string;
-    amount: number;
-    status: 'pending' | 'processing' | 'success' | 'failed';
-    email: string;
+// export type Payment = {
+//     id: string;
+//     amount: number;
+//     status: 'pending' | 'processing' | 'success' | 'failed';
+//     email: string;
+// };
+
+export type GpuData = {
+    gpu_id: number;
+    gpu_name: string;
+    G3Dmark: string;
+    G2Dmark: string;
+    price: string;
+    gpu_value: string;
+    TDP: string;
+    power_performance: string;
+    test_date: string;
+    category: string;
+    company: number;
 };
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<GpuData>[] = [
     {
-        accessorKey: 'status',
-        header: 'Status',
+        accessorKey: 'gpu_id',
+        header: 'GPU ID',
     },
     {
-        accessorKey: 'email',
-        header: 'Email',
+        accessorKey: 'G3Dmark',
+        header: 'G3Dmark',
+    },
+    {
+        accessorKey: 'G2Dmark',
+        header: 'G2Dmark',
     },
     {
         accessorKey: 'amount',
         header: ({ column }) => {
             return (
-                <div className="text-right">
+                <div className='text-right'>
                     <Button
                         variant='ghost'
                         onClick={() =>
@@ -65,7 +83,7 @@ export const columns: ColumnDef<Payment>[] = [
     {
         id: 'actions',
         cell: ({ row }) => {
-            const payment = row.original;
+            const gpu = row.original;
 
             return (
                 <DropdownMenu>
@@ -79,7 +97,9 @@ export const columns: ColumnDef<Payment>[] = [
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
                             onClick={() =>
-                                navigator.clipboard.writeText(payment.id)
+                                navigator.clipboard.writeText(
+                                    gpu.gpu_id.toString()
+                                )
                             }
                         >
                             Copy payment ID

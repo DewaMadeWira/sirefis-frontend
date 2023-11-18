@@ -7,6 +7,9 @@ import CreateGpu from './CreateGpu.tsx';
 import { DataTable } from './payments/data-table.tsx';
 import DemoPage from './payments/page.tsx';
 import TableTest from './table-test.tsx';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 const Router = () => (
     <div>
@@ -27,7 +30,9 @@ const Router = () => (
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        {/* <App /> */}
-        <Router></Router>
+        <QueryClientProvider client={queryClient}>
+            {/* <App /> */}
+            <Router></Router>
+        </QueryClientProvider>
     </React.StrictMode>
 );
