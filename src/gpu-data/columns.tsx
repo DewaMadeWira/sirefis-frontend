@@ -41,7 +41,31 @@ export type GpuData = {
 export const columns: ColumnDef<GpuData>[] = [
     {
         accessorKey: 'gpu_id',
-        header: 'GPU ID',
+        // header: 'GPU ID',
+        header: ({ column }) => {
+            return (
+                <div className='text-right'>
+                    <Button
+                        variant='ghost'
+                        onClick={() =>
+                            column.toggleSorting(column.getIsSorted() === 'asc')
+                        }
+                    >
+                        GPU <br /> ID
+                        <ArrowUpDown className='ml-2 h-4 w-4' />
+                    </Button>
+                </div>
+            );
+        },
+        cell: ({ row }) => {
+            const id = parseFloat(row.getValue('gpu_id'));
+            // const formatted = new Intl.NumberFormat('en-US', {
+            //     style: 'currency',
+            //     currency: 'USD',
+            // }).format(amount);
+
+            return <div className='text-right font-medium'>{id}</div>;
+        },
     },
     {
         accessorKey: 'gpu_name',
@@ -57,7 +81,31 @@ export const columns: ColumnDef<GpuData>[] = [
     },
     {
         accessorKey: 'price',
-        header: 'Price',
+        // header: 'Price',
+        header: ({ column }) => {
+            return (
+                <div className='text-right'>
+                    <Button
+                        variant='ghost'
+                        onClick={() =>
+                            column.toggleSorting(column.getIsSorted() === 'asc')
+                        }
+                    >
+                        Price
+                        <ArrowUpDown className='ml-2 h-4 w-4' />
+                    </Button>
+                </div>
+            );
+        },
+        cell: ({ row }) => {
+            const amount = parseFloat(row.getValue('price'));
+            const formatted = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            }).format(amount);
+
+            return <div className='text-right font-medium'>{formatted}</div>;
+        },
     },
     {
         accessorKey: 'gpu_value',
@@ -73,16 +121,39 @@ export const columns: ColumnDef<GpuData>[] = [
     },
     {
         accessorKey: 'test_date',
-        header: 'Test Date',
+        header: ({ column }) => {
+            return (
+                <div className='text-right'>
+                    <Button
+                        variant='ghost'
+                        onClick={() =>
+                            column.toggleSorting(column.getIsSorted() === 'asc')
+                        }
+                    >
+                        Test <br /> Date
+                        <ArrowUpDown className='ml-2 h-4 w-4' />
+                    </Button>
+                </div>
+            );
+        },
+        cell: ({ row }) => {
+            const test_date = parseFloat(row.getValue('test_date'));
+            // const formatted = new Intl.NumberFormat('en-US', {
+            //     style: 'currency',
+            //     currency: 'USD',
+            // }).format(amount);
+
+            return <div className='text-right font-medium'>{test_date}</div>;
+        },
     },
     {
         accessorKey: 'category',
         header: 'Category',
     },
-    {
-        accessorKey: 'company',
-        header: 'Company',
-    },
+    // {
+    //     accessorKey: 'company',
+    //     header: 'Company',
+    // },
     // {
     //     accessorKey: 'amount',
     //     header: ({ column }) => {
@@ -114,6 +185,7 @@ export const columns: ColumnDef<GpuData>[] = [
     // },
     {
         accessorKey: 'gpu_id',
+        header: 'Actions',
         cell: ({ row }) => {
             const gpu = row.original;
 

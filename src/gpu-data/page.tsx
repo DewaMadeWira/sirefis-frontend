@@ -66,7 +66,7 @@ export default function GpuTable() {
 
     if (data != null) {
         return (
-            <div className='bg-white border-2 border-black rounded-2xl p-5 mt-5'>
+            <div className='bg-white border-2 border-black rounded-2xl p-3 mt-5'>
                 {/* <h1>Hello</h1> */}
                 <DataTable columns={columns} data={data!} />
             </div>

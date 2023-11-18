@@ -24,7 +24,7 @@ function App() {
                 {/* 1st Column */}
                 <LeftSideBar></LeftSideBar>
                 {/* 2nd Column */}
-                <div className='ml-5 w-full'>
+                <div className='ml-5 w-[90%]'>
                     <SecondColHead title='List GPU'></SecondColHead>
                     <GpuTable></GpuTable>
                 </div>

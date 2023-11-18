@@ -17,7 +17,28 @@ function LeftSideBar() {
             </div>
             <div className='bg-white border-2 border-black rounded-xl p-4 mt-5'>
                 <div className=''>
-                    <Accordion type='single' collapsible className='w-full'>
+                    <ul className='flex flex-col gap-8'>
+                        <a href='/'>
+                            <li className='font-bold hover:underline '>
+                                GPU Data
+                            </li>
+                        </a>
+                        <a href='/'>
+                            <li className='font-bold hover:underline '>
+                                GPU Recommendation
+                            </li>
+                        </a>
+
+                        <a href='/table'>
+                            <li className='font-bold hover:underline '>
+                                Company Data{' '}
+                            </li>
+                        </a>
+                        <li className='font-bold hover:underline '>
+                            Admin Data
+                        </li>
+                    </ul>
+                    {/* <Accordion type='single' collapsible className='w-full'>
                         <AccordionItem value='item-1'>
                             <AccordionTrigger>
                                 <h3 className='text-lg font-bold'>GPU</h3>
@@ -92,7 +113,7 @@ function LeftSideBar() {
                                 </ul>
                             </AccordionContent>
                         </AccordionItem>
-                    </Accordion>
+                    </Accordion> */}
                 </div>
             </div>
         </div>
