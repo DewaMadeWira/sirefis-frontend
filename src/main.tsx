@@ -4,6 +4,9 @@ import App from './App.tsx';
 import './index.css';
 import { Route } from 'wouter';
 import CreateGpu from './CreateGpu.tsx';
+import { DataTable } from './payments/data-table.tsx';
+import DemoPage from './payments/page.tsx';
+import TableTest from './table-test.tsx';
 
 const Router = () => (
     <div>
@@ -18,6 +21,7 @@ const Router = () => (
         </Route>
         <Route path='/' component={App}></Route>
         <Route path='/tambah-gpu' component={CreateGpu}></Route>
+        <Route path='/table' component={DemoPage}></Route>
     </div>
 );
 
