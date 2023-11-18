@@ -1,18 +1,7 @@
-import { useState } from 'react';
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from '@/components/ui/accordion';
-
-import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 
-function App() {
-    // const [count, setCount] = useState(0);
-
+function CreateGpu() {
     return (
         <div className='h-screen bg-gray-200'>
             <nav className='bg-green-400'>
@@ -23,11 +12,11 @@ function App() {
                 <LeftSideBar></LeftSideBar>
                 {/* 2nd Column */}
                 <div className='ml-5 w-full'>
-                    <SecondColHead title='List GPU'></SecondColHead>
+                    <SecondColHead title='Create GPU'></SecondColHead>
                 </div>
             </div>
         </div>
     );
 }
 
-export default App;
+export default CreateGpu;
