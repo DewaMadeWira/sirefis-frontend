@@ -11,6 +11,7 @@ import AdminPage from './AdminPage.tsx';
 import CompanyPage from './CompanyPage.tsx';
 import CompanyEmployeePage from './CompanyEmployeePage.tsx';
 import GpuRank from './GpuRank.tsx';
+import CreateGpu from './CreateGpu.tsx';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const Router = () => (
         <Route path='/company' component={CompanyPage}></Route>
         <Route path='/company-employee' component={CompanyEmployeePage}></Route>
         <Route path='/gpu-rank' component={GpuRank}></Route>
+        <Route path='/create-gpu' component={CreateGpu}></Route>
     </div>
 );
 
