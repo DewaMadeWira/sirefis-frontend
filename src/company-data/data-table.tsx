@@ -56,15 +56,15 @@ export function DataTable<TData, TValue>({
         <div className=''>
             <div className='flex items-center py-4'>
                 <Input
-                    placeholder='Cari nama admin ...'
+                    placeholder='Cari Perusahaan...'
                     value={
                         (table
-                            .getColumn('admin_name')
+                            .getColumn('company_name')
                             ?.getFilterValue() as string) ?? ''
                     }
                     onChange={(event) =>
                         table
-                            .getColumn('admin_name')
+                            .getColumn('company_name')
                             ?.setFilterValue(event.target.value)
                     }
                     className='max-w-sm'
@@ -124,14 +124,14 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <div className='flex items-center justify-end space-x-2 py-4'>
-                <a href='/create-gpu'>
+                <a href='/create-company'>
                     <Button
                         variant='outline'
                         size='sm'
                         // onClick={() => table.previousPage()}
                         // disabled={!table.getCanPreviousPage()}
                     >
-                        Create Admin
+                        Create Company
                     </Button>
                 </a>
                 <Button

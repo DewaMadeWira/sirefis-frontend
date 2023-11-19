@@ -56,15 +56,15 @@ export function DataTable<TData, TValue>({
         <div className=''>
             <div className='flex items-center py-4'>
                 <Input
-                    placeholder='Cari nama admin ...'
+                    placeholder='Filter GPU...'
                     value={
                         (table
-                            .getColumn('admin_name')
+                            .getColumn('gpu_name')
                             ?.getFilterValue() as string) ?? ''
                     }
                     onChange={(event) =>
                         table
-                            .getColumn('admin_name')
+                            .getColumn('gpu_name')
                             ?.setFilterValue(event.target.value)
                     }
                     className='max-w-sm'
@@ -101,7 +101,10 @@ export function DataTable<TData, TValue>({
                                     }
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
+                                        <TableCell
+                                            key={cell.id}
+                                          
+                                        >
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -131,7 +134,7 @@ export function DataTable<TData, TValue>({
                         // onClick={() => table.previousPage()}
                         // disabled={!table.getCanPreviousPage()}
                     >
-                        Create Admin
+                        Create GPU
                     </Button>
                 </a>
                 <Button

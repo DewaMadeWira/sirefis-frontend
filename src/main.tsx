@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { Route } from 'wouter';
-import CreateGpu from './CreateGpu.tsx';
 import { DataTable } from './gpu-data/data-table.tsx';
 import DemoPage from './gpu-data/page.tsx';
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import AdminPage from './AdminPage.tsx';
+import CompanyPage from './CompanyPage.tsx';
+import CompanyEmployeePage from './CompanyEmployeePage.tsx';
+import GpuRank from './GpuRank.tsx';
 
 const queryClient = new QueryClient();
 
@@ -24,8 +26,10 @@ const Router = () => (
             {(params) => <div>Hello, {params.name}!</div>}
         </Route>
         <Route path='/' component={App}></Route>
-        <Route path='/gpu' component={CreateGpu}></Route>
         <Route path='/admin' component={AdminPage}></Route>
+        <Route path='/company' component={CompanyPage}></Route>
+        <Route path='/company-employee' component={CompanyEmployeePage}></Route>
+        <Route path='/gpu-rank' component={GpuRank}></Route>
     </div>
 );
 

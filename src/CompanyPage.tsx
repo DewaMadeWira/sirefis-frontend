@@ -1,9 +1,14 @@
+import './App.css';
+import AdminTable from './admin-data/admin-page';
+import CompanyTable from './company-data/page';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 
-function CreateGpu() {
+function CompanyPage() {
+    // const [count, setCount] = useState(0);
+
     return (
-        <div className='h-screen bg-gray-200'>
+        <div className='min-h-screen bg-gray-200'>
             <nav className='bg-green-400'>
                 <h1 className='font-bold text-2xl p-2'>SIREFIS</h1>
             </nav>
@@ -11,12 +16,13 @@ function CreateGpu() {
                 {/* 1st Column */}
                 <LeftSideBar></LeftSideBar>
                 {/* 2nd Column */}
-                <div className='ml-5 w-full'>
-                    <SecondColHead title='Create GPU'></SecondColHead>
+                <div className='ml-5 w-[90%]'>
+                    <SecondColHead title='List Company'></SecondColHead>
+                    <CompanyTable></CompanyTable>
                 </div>
             </div>
         </div>
     );
 }
 
-export default CreateGpu;
+export default CompanyPage;
