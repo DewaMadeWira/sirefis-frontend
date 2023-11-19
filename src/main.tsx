@@ -8,6 +8,7 @@ import { DataTable } from './gpu-data/data-table.tsx';
 import DemoPage from './gpu-data/page.tsx';
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import AdminPage from './AdminPage.tsx';
 
 const queryClient = new QueryClient();
 
@@ -23,8 +24,8 @@ const Router = () => (
             {(params) => <div>Hello, {params.name}!</div>}
         </Route>
         <Route path='/' component={App}></Route>
-        <Route path='/tambah-gpu' component={CreateGpu}></Route>
-        <Route path='/table' component={DemoPage}></Route>
+        <Route path='/gpu' component={CreateGpu}></Route>
+        <Route path='/admin' component={AdminPage}></Route>
     </div>
 );
 
