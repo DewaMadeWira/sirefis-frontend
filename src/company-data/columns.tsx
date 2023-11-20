@@ -14,6 +14,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import axios from 'axios';
+import { useToast } from '@/components/ui/use-toast';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -76,6 +78,7 @@ export const columns: ColumnDef<CompanyData>[] = [
         accessorKey: 'company_id',
         header: 'Actions',
         cell: ({ row }) => {
+            const { toast } = useToast();
             const company = row.original;
 
             return (
@@ -91,7 +94,25 @@ export const columns: ColumnDef<CompanyData>[] = [
                         <DropdownMenuItem>
                             Update Company {company.company_name}
                         </DropdownMenuItem>
-                        <DropdownMenuItem>Delete Company</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => {
+                                axios.post(
+                                    `http://127.0.0.1:8000/api/delete_data_company`,
+                                    {
+                                        company_id: company.company_id,
+                                    }
+                                );
+                                toast({
+                                    title: 'Company Deleted',
+                                    description:
+                                        'A Company has deleted from Database',
+                                    className:
+                                        'bg-white border-black border-2 rounded-xl',
+                                });
+                            }}
+                        >
+                            Delete Company
+                        </DropdownMenuItem>
                         {/* <DropdownMenuItem
                             onClick={() =>
                                 navigator.clipboard.writeText(

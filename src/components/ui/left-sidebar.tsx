@@ -63,9 +63,19 @@ function LeftSideBar() {
                                                 Company List
                                             </li>
                                         </a>
+                                        <a href='/create-company'>
+                                            <li className='cursor-pointer hover:underline'>
+                                                Create Company
+                                            </li>
+                                        </a>
                                         <a href='/company-employee'>
                                             <li className='cursor-pointer hover:underline'>
                                                 Company Employee List
+                                            </li>
+                                        </a>
+                                        <a href='/create-company-employee'>
+                                            <li className='cursor-pointer hover:underline'>
+                                                Create Company Employee
                                             </li>
                                         </a>
                                     </ul>

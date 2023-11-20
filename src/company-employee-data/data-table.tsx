@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <div className='flex items-center justify-end space-x-2 py-4'>
-                <a href='/create-emoloyee'>
+                {/* <a href='/create-emoloyee'>
                     <Button
                         variant='outline'
                         size='sm'
@@ -133,7 +133,7 @@ export function DataTable<TData, TValue>({
                     >
                         Create Employee
                     </Button>
-                </a>
+                </a> */}
                 <Button
                     variant='outline'
                     size='sm'

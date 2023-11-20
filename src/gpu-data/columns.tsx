@@ -202,7 +202,9 @@ export const columns: ColumnDef<GpuData>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align='end' className='bg-white'>
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>Update GPU</DropdownMenuItem>
+                        <a href={`update-gpu/${gpu.gpu_id}`}>
+                            <DropdownMenuItem>Update GPU</DropdownMenuItem>
+                        </a>
                         <DropdownMenuItem
                             onClick={() => {
                                 axios.post(

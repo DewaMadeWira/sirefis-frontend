@@ -15,6 +15,7 @@ import CreateGpu from './CreateGpu.tsx';
 import CreateAdmin from './CreateAdmin.tsx';
 import UpdateGpu from './UpdateGpu.tsx';
 import CreateCompany from './CreateCompany.tsx';
+import CreateCompanyEmployee from './CreateCompanyEmployee.tsx';
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const Router = () => (
         <Route path='/create-gpu' component={CreateGpu}></Route>
         <Route path='/create-admin' component={CreateAdmin}></Route>
         <Route path='/create-company' component={CreateCompany}></Route>
+        <Route path='/create-company-employee' component={CreateCompanyEmployee}></Route>
     </div>
 );
 
