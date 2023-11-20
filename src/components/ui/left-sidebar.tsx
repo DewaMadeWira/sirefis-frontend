@@ -72,11 +72,30 @@ function LeftSideBar() {
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
-                        <a href='/admin'>
-                            <li className='font-bold hover:underline '>
-                                Admin Data
-                            </li>
-                        </a>
+                        <Accordion type='single' collapsible className='w-full'>
+                            <AccordionItem value='item-2'>
+                                <AccordionTrigger>
+                                    <h3 className=' font-bold'>Admin</h3>
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    <ul
+                                        className='flex flex-col gap-4 ml-10 '
+                                        style={{ fontSize: '25' }}
+                                    >
+                                        <a href='/admin'>
+                                            <li className='hover:underline '>
+                                                Admin Data
+                                            </li>
+                                        </a>
+                                        <a href='/create-admin'>
+                                            <li className=' hover:underline '>
+                                                Create Admin
+                                            </li>
+                                        </a>
+                                    </ul>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
                     </ul>
                 </div>
             </div>

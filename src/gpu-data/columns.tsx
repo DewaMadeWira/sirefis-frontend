@@ -14,6 +14,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import axios from 'axios';
+import { useToast } from '@/components/ui/use-toast';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -187,6 +189,7 @@ export const columns: ColumnDef<GpuData>[] = [
         accessorKey: 'gpu_id',
         header: 'Actions',
         cell: ({ row }) => {
+            const { toast } = useToast();
             const gpu = row.original;
 
             return (
@@ -200,7 +203,25 @@ export const columns: ColumnDef<GpuData>[] = [
                     <DropdownMenuContent align='end' className='bg-white'>
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem>Update GPU</DropdownMenuItem>
-                        <DropdownMenuItem>Delete GPU</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => {
+                                axios.post(
+                                    `http://127.0.0.1:8000/api/delete_data`,
+                                    {
+                                        gpu_id: gpu.gpu_id,
+                                    }
+                                );
+                                toast({
+                                    title: 'GPU Deleted',
+                                    description:
+                                        'A GPU has deleted from Database',
+                                    className:
+                                        'bg-white border-black border-2 rounded-xl',
+                                });
+                            }}
+                        >
+                            Delete GPU
+                        </DropdownMenuItem>
                         {/* <DropdownMenuItem
                             onClick={() =>
                                 navigator.clipboard.writeText(
