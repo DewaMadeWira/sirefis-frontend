@@ -6,9 +6,24 @@ import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
+import { useQuery } from '@tanstack/react-query';
+import { AdminData } from './admin-data/columns';
 
-function CreateAdmin() {
+function UpdateAdmin(params: string) {
     const { toast } = useToast();
+
+    const { data, isLoading } = useQuery({
+        queryKey: ['gpu'],
+        queryFn: async () => {
+            const { data } = await axios.post(
+                `http://127.0.0.1:8000/api/admin`,
+                {
+                    admin_id: params,
+                }
+            );
+            return data as AdminData;
+        },
+    });
 
     const admin_name: any = useRef(null);
     const admin_email: any = useRef(null);
@@ -31,6 +46,10 @@ function CreateAdmin() {
         // alert(gpuRef.current.value);
     }
 
+    if (isLoading) {
+        return 'loading..';
+    }
+
     return (
         <div className='min-h-screen bg-gray-200'>
             <nav className='bg-green-400'>
@@ -41,7 +60,7 @@ function CreateAdmin() {
                 <LeftSideBar></LeftSideBar>
                 {/* 2nd Column */}
                 <div className='ml-5 w-[90%]'>
-                    <SecondColHead title='Create GPU'></SecondColHead>
+                    <SecondColHead title='Update Admin'></SecondColHead>
 
                     <form
                         onSubmit={handleSubmit}
@@ -50,6 +69,7 @@ function CreateAdmin() {
                         <div className='w-[45%]'>
                             <h4 className=''>Admin Name</h4>
                             <Input
+                                placeholder={data?.admin_name}
                                 ref={admin_name}
                                 type='text'
                                 className=' mt-2'
@@ -57,12 +77,14 @@ function CreateAdmin() {
                             ></Input>
                             <h4 className=''>Admin Email</h4>
                             <Input
+                                placeholder={data?.admin_email}
                                 ref={admin_email}
                                 className=' mt-2'
                                 required
                             ></Input>
                             <h4 className=''>Password</h4>
                             <Input
+                                // placeholder={data?.password}
                                 ref={password}
                                 className=' mt-2'
                                 required
@@ -82,4 +104,4 @@ function CreateAdmin() {
     );
 }
 
-export default CreateAdmin;
+export default UpdateAdmin;

@@ -30,6 +30,7 @@ export type AdminData = {
     admin_id: number;
     admin_name: string;
     admin_email: string;
+    // password: string;
 };
 
 export const columns: ColumnDef<AdminData>[] = [
