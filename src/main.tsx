@@ -14,6 +14,7 @@ import GpuRank from './GpuRank.tsx';
 import CreateGpu from './CreateGpu.tsx';
 import CreateAdmin from './CreateAdmin.tsx';
 import UpdateGpu from './UpdateGpu.tsx';
+import CreateCompany from './CreateCompany.tsx';
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const Router = () => (
         ></Route>
         <Route path='/create-gpu' component={CreateGpu}></Route>
         <Route path='/create-admin' component={CreateAdmin}></Route>
+        <Route path='/create-company' component={CreateCompany}></Route>
     </div>
 );
 
