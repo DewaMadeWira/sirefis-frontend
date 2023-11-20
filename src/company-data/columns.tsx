@@ -91,9 +91,11 @@ export const columns: ColumnDef<CompanyData>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align='end' className='bg-white'>
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>
-                            Update Company {company.company_name}
-                        </DropdownMenuItem>
+                        <a href={`/update-company/${company.company_id}`}>
+                            <DropdownMenuItem>
+                                Update Company {company.company_name}
+                            </DropdownMenuItem>
+                        </a>
                         <DropdownMenuItem
                             onClick={() => {
                                 axios.post(
