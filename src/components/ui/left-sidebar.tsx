@@ -38,6 +38,11 @@ function LeftSideBar() {
                                                 GPU Recommendation
                                             </li>
                                         </a>
+                                        <a href='/create-gpu'>
+                                            <li className=' hover:underline '>
+                                                Create GPU
+                                            </li>
+                                        </a>
                                     </ul>
                                 </AccordionContent>
                             </AccordionItem>

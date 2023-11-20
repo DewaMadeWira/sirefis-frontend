@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { Route } from 'wouter';
-import { DataTable } from './gpu-data/data-table.tsx';
-import DemoPage from './gpu-data/page.tsx';
+
+import { Toaster } from '@/components/ui/toaster';
 
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import AdminPage from './AdminPage.tsx';
@@ -39,6 +39,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
             {/* <App /> */}
+            <Toaster />
             <Router></Router>
         </QueryClientProvider>
     </React.StrictMode>
