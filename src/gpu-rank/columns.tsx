@@ -29,6 +29,7 @@ export type GpuRank = {
     gpu_name: string;
     alternative: string;
     score: string;
+    price: string;
 };
 
 export const columns: ColumnDef<GpuRank>[] = [
@@ -89,6 +90,33 @@ export const columns: ColumnDef<GpuRank>[] = [
             // }).format(amount);
 
             return <div className='text-right font-medium'>{score}</div>;
+        },
+    },
+    {
+        accessorKey: 'price',
+        header: ({ column }) => {
+            return (
+                <div className='text-right'>
+                    <Button
+                        variant='ghost'
+                        onClick={() =>
+                            column.toggleSorting(column.getIsSorted() === 'asc')
+                        }
+                    >
+                        Price
+                        <ArrowUpDown className='ml-2 h-4 w-4' />
+                    </Button>
+                </div>
+            );
+        },
+        cell: ({ row }) => {
+            const price = parseFloat(row.getValue('price'));
+            // const formatted = new Intl.NumberFormat('en-US', {
+            //     style: 'currency',
+            //     currency: 'USD',
+            // }).format(amount);
+
+            return <div className='text-right font-medium'>{price}</div>;
         },
     },
 
