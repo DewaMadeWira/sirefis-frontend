@@ -86,9 +86,11 @@ export const columns: ColumnDef<AdminData>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align='end' className='bg-white'>
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>
-                            Update Admin {admin.admin_name}
-                        </DropdownMenuItem>
+                        <a href={`/update-admin/${admin.admin_id}`}>
+                            <DropdownMenuItem>
+                                Update Admin {admin.admin_name}
+                            </DropdownMenuItem>
+                        </a>
                         <DropdownMenuItem
                             onClick={() => {
                                 axios.post(
