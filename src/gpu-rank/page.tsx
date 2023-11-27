@@ -51,7 +51,7 @@ export default function GpuRankTable() {
                     workstation: 'false',
                     desktop: 'false',
                     priceMin: '0',
-                    priceMax: '200000',
+                    priceMax: '300000',
                 }
             );
             return data as GpuRank[];
