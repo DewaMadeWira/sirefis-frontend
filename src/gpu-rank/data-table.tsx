@@ -101,10 +101,7 @@ export function DataTable<TData, TValue>({
                                     }
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell
-                                            key={cell.id}
-                                          
-                                        >
+                                        <TableCell key={cell.id}>
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -127,7 +124,7 @@ export function DataTable<TData, TValue>({
                 </Table>
             </div>
             <div className='flex items-center justify-end space-x-2 py-4'>
-                <a href='/create-gpu'>
+                {/* <a href='/create-gpu'>
                     <Button
                         variant='outline'
                         size='sm'
@@ -136,7 +133,7 @@ export function DataTable<TData, TValue>({
                     >
                         Create GPU
                     </Button>
-                </a>
+                </a> */}
                 <Button
                     variant='outline'
                     size='sm'
