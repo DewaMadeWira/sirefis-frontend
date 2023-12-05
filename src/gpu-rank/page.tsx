@@ -43,16 +43,8 @@ export default function GpuRankTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu-rank'],
         queryFn: async () => {
-            const { data } = await axios.post(
-                `http://127.0.0.1:8000/api/gpu-rank`,
-                {
-                    amd: 'false',
-                    nvidia: 'false',
-                    workstation: 'false',
-                    desktop: 'false',
-                    priceMin: '0',
-                    priceMax: '300000',
-                }
+            const { data } = await axios.get(
+                `http://127.0.0.1:8080/rank-mabac`
             );
             return data as GpuRank[];
         },

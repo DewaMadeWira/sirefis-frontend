@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id}>
+                            <TableRow className='' key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
                                         <TableHead key={header.id}>
@@ -101,7 +101,10 @@ export function DataTable<TData, TValue>({
                                     }
                                 >
                                     {row.getVisibleCells().map((cell) => (
-                                        <TableCell key={cell.id}>
+                                        <TableCell
+                                            className='w-2'
+                                            key={cell.id}
+                                        >
                                             {flexRender(
                                                 cell.column.columnDef.cell,
                                                 cell.getContext()
@@ -123,7 +126,7 @@ export function DataTable<TData, TValue>({
                     </TableBody>
                 </Table>
             </div>
-            <div className='flex items-center justify-end space-x-2 py-4'>
+            <div className='flex items-center justify-end space-x-2 py-4 '>
                 {/* <a href='/create-gpu'>
                     <Button
                         variant='outline'

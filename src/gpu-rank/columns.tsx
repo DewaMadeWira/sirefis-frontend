@@ -38,7 +38,7 @@ export const columns: ColumnDef<GpuRank>[] = [
         // header: 'GPU ID',
         header: ({ column }) => {
             return (
-                <div className='text-right'>
+                <div className='text-left'>
                     <Button
                         variant='ghost'
                         onClick={() =>

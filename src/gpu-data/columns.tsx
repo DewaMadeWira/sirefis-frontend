@@ -38,6 +38,9 @@ export type GpuData = {
     test_date: string;
     category: string;
     company: number;
+    memSize: string;
+    gpu_clock: string;
+    mem_clock: string;
 };
 
 export const columns: ColumnDef<GpuData>[] = [

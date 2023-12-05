@@ -43,7 +43,7 @@ export default function GpuTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
-            const { data } = await axios.get(`http://127.0.0.1:8000/api/gpu`);
+            const { data } = await axios.get(`http://127.0.0.1:8080/gpu`);
             return data as GpuData[];
         },
     });
