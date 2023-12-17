@@ -15,10 +15,12 @@ function RecommendationForm() {
 
     const [company, setCompany] = useState('');
     const [type, setType] = useState('');
+    const [hargaMinimum, setHargaMinimum] = useState('0');
+    const [hargaMaksimum, setHargaMaksimum] = useState('10000');
     // let company: any = useRef(null);
     // let type: any = useRef(null);
-    const hargaMinimum: any = useRef(null);
-    const hargaMaksimum: any = useRef(null);
+    // const hargaMinimum: any = useRef(null);
+    // const hargaMaksimum: any = useRef(null);
 
     function handleSubmit(event: any) {
         event.preventDefault();
@@ -134,19 +136,27 @@ function RecommendationForm() {
                             </div>
                             <h4 className=''>Harga Minimum</h4>
                             <Input
-                                ref={hargaMinimum}
+                                // ref={hargaMinimum}
+                                onChange={(e) =>
+                                    setHargaMinimum(e.target.value)
+                                }
                                 className=' mt-2'
                                 required
+                                type='number'
                             ></Input>
                             <h4 className=''>Harga Maksimum</h4>
                             <Input
-                                ref={hargaMaksimum}
+                                onChange={(e) =>
+                                    setHargaMaksimum(e.target.value)
+                                }
+                                // ref={hargaMaksimum}
                                 className=' mt-2'
                                 required
+                                type='number'
                             ></Input>
                         </div>
                         <Link
-                            href={`/gpu-rank/${company}/${type}`}
+                            href={`/gpu-rank/${company}/${type}/${hargaMinimum}/${hargaMaksimum}`}
                             className='active'
                         >
                             <button

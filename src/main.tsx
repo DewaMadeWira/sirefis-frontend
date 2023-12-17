@@ -20,6 +20,8 @@ import UpdateAdmin from './UpdateAdmin.tsx';
 import UpdateCompany from './UpdateCompany.tsx';
 import RecommendationForm from './RecommendationForm.tsx';
 import GpuTop from './GpuTop.tsx';
+import GpuFilter from './gpu-filter/page.tsx';
+import GpuFilterRank from './GpuFilterRank.tsx';
 
 const queryClient = new QueryClient();
 
@@ -50,12 +52,28 @@ const Router = () => (
             component={(params) => UpdateAdmin(params.params.id)}
         ></Route>
         <Route
-            path='/gpu-rank/:company/:type'
-            component={(params) => (
-                <div>
-                    Hello, {params.params.company + ' ' + params.params.type}!
-                </div>
-            )}
+            path='/gpu-rank/:company/:type/:minimum/:maksimum'
+            // component={(params) => (
+            //     <div>
+            //         Hello,{' '}
+            //         {params.params.company +
+            //             ' ' +
+            //             params.params.type +
+            //             ' ' +
+            //             params.params.minimum +
+            //             ' ' +
+            //             params.params.maksimum}
+            //         !
+            //     </div>
+            // )}
+            component={(params) =>
+                GpuFilterRank(
+                    params.params.company,
+                    params.params.type,
+                    params.params.minimum,
+                    params.params.maksimum
+                )
+            }
         ></Route>
         <Route
             path='/update-company/:id'
