@@ -6,6 +6,7 @@ import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
+import { apiLink } from './Link';
 
 function CreateCompany() {
     const { toast } = useToast();
@@ -17,7 +18,7 @@ function CreateCompany() {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_data_company`, {
+        axios.post(`${apiLink}/api/create_data_company`, {
             company_name: company_name.current.value,
             ceo: ceo.current.value,
             location: location.current.value,

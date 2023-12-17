@@ -3,6 +3,7 @@ import { GpuRank, columns } from './columns';
 import { DataTable } from './data-table';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { apiLink } from '@/Link';
 
 // async function getData(): Promise<Payment[]> {
 //     // Fetch data from your API here.
@@ -43,17 +44,14 @@ export default function GpuRankTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu-rank'],
         queryFn: async () => {
-            const { data } = await axios.post(
-                `http://127.0.0.1:8000/api/gpu-rank`,
-                {
-                    amd: 'false',
-                    nvidia: 'false',
-                    workstation: 'false',
-                    desktop: 'false',
-                    priceMin: '0',
-                    priceMax: '300000',
-                }
-            );
+            const { data } = await axios.post(`${apiLink}/api/gpu-rank`, {
+                amd: 'false',
+                nvidia: 'false',
+                workstation: 'false',
+                desktop: 'false',
+                priceMin: '0',
+                priceMax: '300000',
+            });
             return data as GpuRank[];
         },
     });

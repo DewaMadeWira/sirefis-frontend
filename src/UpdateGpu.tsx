@@ -8,6 +8,8 @@ import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
 import { useQuery } from '@tanstack/react-query';
 import { GpuData } from './gpu-data/columns';
+import React from 'react';
+import { apiLink } from './Link';
 
 // type ParamsType = {
 //     params: string;
@@ -16,12 +18,9 @@ function CreateGpu(params: string) {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
-            const { data } = await axios.post(
-                `http://127.0.0.1:8000/api/get-gpu`,
-                {
-                    gpu_id: params,
-                }
-            );
+            const { data } = await axios.post(`${apiLink}/api/get-gpu`, {
+                gpu_id: params,
+            });
             return data as GpuData;
         },
     });
@@ -42,7 +41,7 @@ function CreateGpu(params: string) {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_data`, {
+        axios.post(`${apiLink}/api/create_data`, {
             gpu_name: gpuRef.current.value,
             G3Dmark: g3dRef.current.value,
             G2Dmark: g2dRef.current.value,
@@ -55,8 +54,8 @@ function CreateGpu(params: string) {
             company: companyRef.current.value,
         });
         toast({
-            title: 'Item Created',
-            description: 'New GPU has added to Database',
+            title: 'Item Updated',
+            description: 'A GPU has been updated',
             className: 'bg-white border-black border-2 rounded-xl',
         });
 

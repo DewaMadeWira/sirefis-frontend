@@ -3,6 +3,7 @@ import {  CompanyEmployeeData, columns } from './columns';
 import { DataTable } from './data-table';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { apiLink } from '@/Link';
 
 // async function getData(): Promise<Payment[]> {
 //     // Fetch data from your API here.
@@ -44,7 +45,7 @@ export default function CompanyEmployeeTable() {
         queryKey: ['company'],
         queryFn: async () => {
             const { data } = await axios.get(
-                `http://127.0.0.1:8000/api/company-employee`
+                `${apiLink}/api/company-employee`
             );
             return data as CompanyEmployeeData[];
         },

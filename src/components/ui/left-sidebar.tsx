@@ -38,6 +38,11 @@ function LeftSideBar() {
                                                 GPU Recommendation
                                             </li>
                                         </a>
+                                        <a href='/top-rank'>
+                                            <li className=' hover:underline '>
+                                                Top GPU Recommendation
+                                            </li>
+                                        </a>
                                         <a href='/create-gpu'>
                                             <li className=' hover:underline '>
                                                 Create GPU

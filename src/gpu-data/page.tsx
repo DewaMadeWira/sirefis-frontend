@@ -3,6 +3,7 @@ import { GpuData, columns } from './columns';
 import { DataTable } from './data-table';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { apiLink } from '@/Link';
 
 // async function getData(): Promise<Payment[]> {
 //     // Fetch data from your API here.
@@ -43,7 +44,7 @@ export default function GpuTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
-            const { data } = await axios.get(`http://127.0.0.1:8000/api/gpu`);
+            const { data } = await axios.get(`${apiLink}/api/gpu`);
             return data as GpuData[];
         },
     });

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CompanyData, columns } from './columns';
+import { GpuRank, columns } from './columns';
 import { DataTable } from './data-table';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
@@ -40,12 +40,12 @@ import { apiLink } from '@/Link';
 //     });
 // };
 
-export default function CompanyTable() {
+export default function GpuTopTable() {
     const { data, isLoading } = useQuery({
-        queryKey: ['company'],
+        queryKey: ['gpu-rank'],
         queryFn: async () => {
-            const { data } = await axios.get(`${apiLink}/api/company`);
-            return data as CompanyData[];
+            const { data } = await axios.get(`${apiLink}/api/top-gpu`);
+            return data as GpuRank[];
         },
     });
     // const [data, setData] = useState<Payment[]>([]);

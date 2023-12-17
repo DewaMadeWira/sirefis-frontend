@@ -3,6 +3,7 @@ import { AdminData, columns } from './columns';
 import { DataTable } from './data-table';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { apiLink } from '@/Link';
 
 // async function getData(): Promise<Payment[]> {
 //     // Fetch data from your API here.
@@ -43,7 +44,7 @@ export default function AdminTable() {
     const { data, isLoading } = useQuery({
         queryKey: ['admin'],
         queryFn: async () => {
-            const { data } = await axios.get(`http://127.0.0.1:8000/api/admin`);
+            const { data } = await axios.get(`${apiLink}/api/admin`);
             return data as AdminData[];
         },
     });

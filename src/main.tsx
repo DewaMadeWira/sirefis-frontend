@@ -18,6 +18,8 @@ import CreateCompany from './CreateCompany.tsx';
 import CreateCompanyEmployee from './CreateCompanyEmployee.tsx';
 import UpdateAdmin from './UpdateAdmin.tsx';
 import UpdateCompany from './UpdateCompany.tsx';
+import RecommendationForm from './RecommendationForm.tsx';
+import GpuTop from './GpuTop.tsx';
 
 const queryClient = new QueryClient();
 
@@ -36,7 +38,9 @@ const Router = () => (
         <Route path='/admin' component={AdminPage}></Route>
         <Route path='/company' component={CompanyPage}></Route>
         <Route path='/company-employee' component={CompanyEmployeePage}></Route>
-        <Route path='/gpu-rank' component={GpuRank}></Route>
+        {/* <Route path='/gpu-rank' component={GpuRank}></Route> */}
+        <Route path='/gpu-rank' component={RecommendationForm}></Route>
+        <Route path='/top-rank' component={GpuTop}></Route>
         <Route
             path='/update-gpu/:id'
             component={(params) => UpdateGpu(params.params.id)}
@@ -44,6 +48,14 @@ const Router = () => (
         <Route
             path='/update-admin/:id'
             component={(params) => UpdateAdmin(params.params.id)}
+        ></Route>
+        <Route
+            path='/gpu-rank/:company/:type'
+            component={(params) => (
+                <div>
+                    Hello, {params.params.company + ' ' + params.params.type}!
+                </div>
+            )}
         ></Route>
         <Route
             path='/update-company/:id'

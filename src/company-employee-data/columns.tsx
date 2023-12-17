@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import axios from 'axios';
 import { useToast } from '@/components/ui/use-toast';
+import { apiLink } from '@/Link';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -92,7 +93,7 @@ export const columns: ColumnDef<CompanyEmployeeData>[] = [
                         <DropdownMenuItem
                             onClick={() => {
                                 axios.post(
-                                    `http://127.0.0.1:8000/api/delete_data_company_employee`,
+                                    `${apiLink}/api/delete_data_company_employee`,
                                     {
                                         employee_id: employee.employee_id,
                                     }

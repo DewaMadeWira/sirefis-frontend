@@ -8,6 +8,7 @@ import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
 import { useQuery } from '@tanstack/react-query';
 import { AdminData } from './admin-data/columns';
+import { apiLink } from './Link';
 
 function UpdateAdmin(params: string) {
     const { toast } = useToast();
@@ -15,12 +16,9 @@ function UpdateAdmin(params: string) {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
-            const { data } = await axios.post(
-                `http://127.0.0.1:8000/api/admin`,
-                {
-                    admin_id: params,
-                }
-            );
+            const { data } = await axios.post(`${apiLink}/api/admin`, {
+                admin_id: params,
+            });
             return data as AdminData;
         },
     });
@@ -32,7 +30,7 @@ function UpdateAdmin(params: string) {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_admin`, {
+        axios.post(`${apiLink}/api/create_admin`, {
             admin_name: admin_name.current.value,
             admin_email: admin_email.current.value,
             password: password.current.value,

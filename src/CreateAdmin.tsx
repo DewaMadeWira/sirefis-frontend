@@ -6,6 +6,7 @@ import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
+import { apiLink } from './Link';
 
 function CreateAdmin() {
     const { toast } = useToast();
@@ -17,7 +18,7 @@ function CreateAdmin() {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_admin`, {
+        axios.post(`${apiLink}/api/create_admin`, {
             admin_name: admin_name.current.value,
             admin_email: admin_email.current.value,
             password: password.current.value,
@@ -41,7 +42,7 @@ function CreateAdmin() {
                 <LeftSideBar></LeftSideBar>
                 {/* 2nd Column */}
                 <div className='ml-5 w-[90%]'>
-                    <SecondColHead title='Create GPU'></SecondColHead>
+                    <SecondColHead title='Create Admin'></SecondColHead>
 
                     <form
                         onSubmit={handleSubmit}
@@ -63,6 +64,7 @@ function CreateAdmin() {
                             ></Input>
                             <h4 className=''>Password</h4>
                             <Input
+                                type='password'
                                 ref={password}
                                 className=' mt-2'
                                 required

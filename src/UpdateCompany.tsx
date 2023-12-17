@@ -8,17 +8,15 @@ import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
 import { useQuery } from '@tanstack/react-query';
 import { CompanyData } from './company-data/columns';
+import { apiLink } from './Link';
 
 function UpdateCompany(params: string) {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
-            const { data } = await axios.post(
-                `http://127.0.0.1:8000/api/company`,
-                {
-                    company_id: params,
-                }
-            );
+            const { data } = await axios.post(`${apiLink}/api/company`, {
+                company_id: params,
+            });
             return data as CompanyData;
         },
     });
@@ -31,7 +29,7 @@ function UpdateCompany(params: string) {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_data_company`, {
+        axios.post(`${apiLink}/api/create_data_company`, {
             company_name: company_name.current.value,
             ceo: ceo.current.value,
             location: location.current.value,
@@ -89,7 +87,8 @@ function UpdateCompany(params: string) {
                                 required
                             ></Input>
                         </div>
-
+                        
+                        
                         <button
                             type='submit'
                             className='mt-5 bg-green-400 px-4 p-2 rounded-xl border-black border-2'

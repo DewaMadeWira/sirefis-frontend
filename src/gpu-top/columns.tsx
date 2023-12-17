@@ -14,9 +14,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import axios from 'axios';
-import { useToast } from '@/components/ui/use-toast';
-import { apiLink } from '@/Link';
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -27,21 +24,15 @@ import { apiLink } from '@/Link';
 //     email: string;
 // };
 
-export type GpuData = {
+export type GpuRank = {
     gpu_id: number;
     gpu_name: string;
-    G3Dmark: string;
-    G2Dmark: string;
+    alternative: string;
+    score: string;
     price: string;
-    gpu_value: string;
-    TDP: string;
-    power_performance: string;
-    test_date: string;
-    category: string;
-    company: number;
 };
 
-export const columns: ColumnDef<GpuData>[] = [
+export const columns: ColumnDef<GpuRank>[] = [
     {
         accessorKey: 'gpu_id',
         // header: 'GPU ID',
@@ -75,16 +66,34 @@ export const columns: ColumnDef<GpuData>[] = [
         header: 'GPU Name',
     },
     {
-        accessorKey: 'G3Dmark',
-        header: 'G3Dmark',
-    },
-    {
-        accessorKey: 'G2Dmark',
-        header: 'G2Dmark',
+        accessorKey: 'score',
+        header: ({ column }) => {
+            return (
+                <div className='text-right'>
+                    <Button
+                        variant='ghost'
+                        onClick={() =>
+                            column.toggleSorting(column.getIsSorted() === 'asc')
+                        }
+                    >
+                        Score
+                        <ArrowUpDown className='ml-2 h-4 w-4' />
+                    </Button>
+                </div>
+            );
+        },
+        cell: ({ row }) => {
+            const score = parseFloat(row.getValue('score'));
+            // const formatted = new Intl.NumberFormat('en-US', {
+            //     style: 'currency',
+            //     currency: 'USD',
+            // }).format(amount);
+
+            return <div className='text-right font-medium'>{score}</div>;
+        },
     },
     {
         accessorKey: 'price',
-        // header: 'Price',
         header: ({ column }) => {
             return (
                 <div className='text-right'>
@@ -101,58 +110,16 @@ export const columns: ColumnDef<GpuData>[] = [
             );
         },
         cell: ({ row }) => {
-            const amount = parseFloat(row.getValue('price'));
-            const formatted = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            }).format(amount);
-
-            return <div className='text-right font-medium'>{formatted}</div>;
-        },
-    },
-    {
-        accessorKey: 'gpu_value',
-        header: 'GPU Value',
-    },
-    {
-        accessorKey: 'TDP',
-        header: 'TDP',
-    },
-    {
-        accessorKey: 'power_performance',
-        header: 'Power Performance',
-    },
-    {
-        accessorKey: 'test_date',
-        header: ({ column }) => {
-            return (
-                <div className='text-right'>
-                    <Button
-                        variant='ghost'
-                        onClick={() =>
-                            column.toggleSorting(column.getIsSorted() === 'asc')
-                        }
-                    >
-                        Test <br /> Date
-                        <ArrowUpDown className='ml-2 h-4 w-4' />
-                    </Button>
-                </div>
-            );
-        },
-        cell: ({ row }) => {
-            const test_date = parseFloat(row.getValue('test_date'));
+            const price = parseFloat(row.getValue('price'));
             // const formatted = new Intl.NumberFormat('en-US', {
             //     style: 'currency',
             //     currency: 'USD',
             // }).format(amount);
 
-            return <div className='text-right font-medium'>{test_date}</div>;
+            return <div className='text-right font-medium'>{price}</div>;
         },
     },
-    {
-        accessorKey: 'category',
-        header: 'Category',
-    },
+
     // {
     //     accessorKey: 'company',
     //     header: 'Company',
@@ -186,59 +153,4 @@ export const columns: ColumnDef<GpuData>[] = [
 
     //     // header: 'Amount',
     // },
-    {
-        accessorKey: 'gpu_id',
-        header: 'Actions',
-        cell: ({ row }) => {
-            const { toast } = useToast();
-            const gpu = row.original;
-
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant='ghost' className='h-8 w-8 p-0'>
-                            <span className='sr-only'>Open menu</span>
-                            <MoreHorizontal className='h-4 w-4' />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align='end' className='bg-white'>
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <a href={`update-gpu/${gpu.gpu_id}`}>
-                            <DropdownMenuItem>Update GPU</DropdownMenuItem>
-                        </a>
-                        <DropdownMenuItem
-                            onClick={() => {
-                                axios.post(`${apiLink}/api/delete_data`, {
-                                    gpu_id: gpu.gpu_id,
-                                });
-                                toast({
-                                    title: 'GPU Deleted',
-                                    description:
-                                        'A GPU has deleted from Database',
-                                    className:
-                                        'bg-white border-black border-2 rounded-xl',
-                                });
-                            }}
-                        >
-                            Delete GPU
-                        </DropdownMenuItem>
-                        {/* <DropdownMenuItem
-                            onClick={() =>
-                                navigator.clipboard.writeText(
-                                    gpu.gpu_id.toString()
-                                )
-                            }
-                        >
-                            Copy GPU ID {gpu.gpu_id.toString()}
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>
-                            View payment details
-                        </DropdownMenuItem> */}
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            );
-        },
-    },
 ];

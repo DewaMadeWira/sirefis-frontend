@@ -6,6 +6,7 @@ import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
+import { apiLink } from './Link';
 
 function CreateCompanyEmployee() {
     const { toast } = useToast();
@@ -18,7 +19,7 @@ function CreateCompanyEmployee() {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_data_company_employee`, {
+        axios.post(`${apiLink}/api/create_data_company_employee`, {
             employee_name: employee_name.current.value,
             employee_email: employee_email.current.value,
             password: password.current.value,
@@ -65,6 +66,7 @@ function CreateCompanyEmployee() {
                             ></Input>
                             <h4 className=''>Password</h4>
                             <Input
+                            type='password'
                                 ref={password}
                                 className=' mt-2'
                                 required

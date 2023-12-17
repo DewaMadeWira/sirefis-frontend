@@ -6,6 +6,7 @@ import './App.css';
 import LeftSideBar from './components/ui/left-sidebar';
 import SecondColHead from './components/ui/second-col-head';
 import { Input } from './components/ui/input';
+import { apiLink } from './Link';
 
 function CreateGpu() {
     const { toast } = useToast();
@@ -24,7 +25,7 @@ function CreateGpu() {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`http://127.0.0.1:8000/api/create_data`, {
+        axios.post(`${apiLink}/api/create_data`, {
             gpu_name: gpuRef.current.value,
             G3Dmark: g3dRef.current.value,
             G2Dmark: g2dRef.current.value,
