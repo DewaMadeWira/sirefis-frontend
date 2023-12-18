@@ -13,7 +13,7 @@ import CompanyEmployeePage from './CompanyEmployeePage.tsx';
 import GpuRank from './GpuRank.tsx';
 import CreateGpu from './CreateGpu.tsx';
 import CreateAdmin from './CreateAdmin.tsx';
-import UpdateGpu from './UpdateGpu.tsx';
+
 import CreateCompany from './CreateCompany.tsx';
 import CreateCompanyEmployee from './CreateCompanyEmployee.tsx';
 import UpdateAdmin from './UpdateAdmin.tsx';
@@ -22,6 +22,7 @@ import RecommendationForm from './RecommendationForm.tsx';
 import GpuTop from './GpuTop.tsx';
 import GpuFilter from './gpu-filter/page.tsx';
 import GpuFilterRank from './GpuFilterRank.tsx';
+import UpdateGpu from './UpdateGpu.tsx';
 
 const queryClient = new QueryClient();
 

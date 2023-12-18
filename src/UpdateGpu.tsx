@@ -38,24 +38,29 @@ function UpdateGpu(params: string) {
     const categoryRef: any = useRef(null);
     const companyRef: any = useRef(null);
 
-    function handleSubmit(event: any) {
+    async function handleSubmit(event: any) {
         event.preventDefault();
+        try {
+            let result = axios.post(`${apiLink}/api/update_data_gpu`, {
+                gpu_id: params,
+                gpu_name: gpuRef.current.value,
+                G3Dmark: g3dRef.current.value,
+                G2Dmark: g2dRef.current.value,
+                price: priceRef.current.value,
+                gpu_value: valueRef.current.value,
+                TDP: tdpRef.current.value,
+                power_performance: performanceRef.current.value,
+                test_date: dateRef.current.value,
+                category: categoryRef.current.value,
+                company: companyRef.current.value,
+            });
+            // console.log(result.data);
+        } catch (error: any) {
+            console.error(error); // NOTE - use "error.response.data` (not "error")
+        }
 
-        axios.post(`${apiLink}/api/update_data_gpu`, {
-            gpu_id:params,
-            gpu_name: gpuRef.current.value,
-            G3Dmark: g3dRef.current.value,
-            G2Dmark: g2dRef.current.value,
-            price: priceRef.current.value,
-            gpu_value: valueRef.current.value,
-            TDP: tdpRef.current.value,
-            power_performance: performanceRef.current.value,
-            test_date: dateRef.current.value,
-            category: categoryRef.current.value,
-            company: companyRef.current.value,
-        });
         toast({
-            title: gpuRef.current.value,
+            title: 'Update GPU',
             description: 'A GPU has been updated',
             className: 'bg-white border-black border-2 rounded-xl',
         });
