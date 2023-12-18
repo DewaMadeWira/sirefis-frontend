@@ -22,21 +22,26 @@ function CreateGpu() {
     const categoryRef: any = useRef(null);
     const companyRef: any = useRef(null);
 
-    function handleSubmit(event: any) {
+    async function handleSubmit(event: any) {
         event.preventDefault();
+        try {
+            let result = await axios.post(`${apiLink}/api/create_data`, {
+                gpu_name: gpuRef.current.value,
+                G3Dmark: g3dRef.current.value,
+                G2Dmark: g2dRef.current.value,
+                price: priceRef.current.value,
+                gpu_value: valueRef.current.value,
+                TDP: tdpRef.current.value,
+                power_performance: performanceRef.current.value,
+                test_date: dateRef.current.value,
+                category: categoryRef.current.value,
+                company: companyRef.current.value,
+            });
+            console.log(result.data);
+        } catch (error: any) {
+            console.error(error); // NOTE - use "error.response.data` (not "error")
+        }
 
-        axios.post(`${apiLink}/api/create_data`, {
-            gpu_name: gpuRef.current.value,
-            G3Dmark: g3dRef.current.value,
-            G2Dmark: g2dRef.current.value,
-            price: priceRef.current.value,
-            gpu_value: valueRef.current.value,
-            TDP: tdpRef.current.value,
-            power_performance: performanceRef.current.value,
-            test_date: dateRef.current.value,
-            category: categoryRef.current.value,
-            company: companyRef.current.value,
-        });
         toast({
             title: 'Item Created',
             description: 'New GPU has added to Database',

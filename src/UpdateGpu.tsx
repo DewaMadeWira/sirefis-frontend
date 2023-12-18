@@ -14,7 +14,7 @@ import { apiLink } from './Link';
 // type ParamsType = {
 //     params: string;
 // };
-function CreateGpu(params: string) {
+function UpdateGpu(params: string) {
     const { data, isLoading } = useQuery({
         queryKey: ['gpu'],
         queryFn: async () => {
@@ -41,7 +41,7 @@ function CreateGpu(params: string) {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`${apiLink}/api/create_data`, {
+        axios.post(`${apiLink}/api/update_data`, {
             gpu_name: gpuRef.current.value,
             G3Dmark: g3dRef.current.value,
             G2Dmark: g2dRef.current.value,
@@ -172,4 +172,4 @@ function CreateGpu(params: string) {
     );
 }
 
-export default CreateGpu;
+export default UpdateGpu;
