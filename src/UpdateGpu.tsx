@@ -41,7 +41,8 @@ function UpdateGpu(params: string) {
     function handleSubmit(event: any) {
         event.preventDefault();
 
-        axios.post(`${apiLink}/api/update_data`, {
+        axios.post(`${apiLink}/api/update_data_gpu`, {
+            gpu_id:params,
             gpu_name: gpuRef.current.value,
             G3Dmark: g3dRef.current.value,
             G2Dmark: g2dRef.current.value,
@@ -54,7 +55,7 @@ function UpdateGpu(params: string) {
             company: companyRef.current.value,
         });
         toast({
-            title: 'Item Updated',
+            title: gpuRef.current.value,
             description: 'A GPU has been updated',
             className: 'bg-white border-black border-2 rounded-xl',
         });
